@@ -1,19 +1,27 @@
-// write js code here if required
-function updateTime(){
-	let now = new Date();
+function updateTime() {
+    const now = new Date();
 
-	const day = String(now.getDate()).padstart(2,'0');
-	const month = String(now.getMonth()+1).padstart(2,'0');
-	const year = now.getFullYear();
+    // Get the day, month, and year
+    const day = String(now.getDate()).padStart(2, '0');
+    const month = String(now.getMonth() + 1).padStart(2, '0'); // Month is zero-indexed
+    const year = now.getFullYear();
 
-	const hours = String(now.getHours()).padstart(2,'0');
-	const min = String(now.getMinutes()).padstart(2,'0');
-	const seconds = String(now.getSecons()).padstart(2,'0')
+    // Get hours, minutes, and seconds
+    const hours = String(now.getHours()).padStart(2, '0');
+    const minutes = String(now.getMinutes()).padStart(2, '0');
+    const seconds = String(now.getSeconds()).padStart(2, '0');
 
-	const formatted = `${day}/${month}/${year},${hours}:${min}:${seconds}`
-	document.getElementById('timer').textContent = formatted;
+    // Format the date and time as "day/month/year, hours:minutes:seconds"
+    const formattedTime = `${day}/${month}/${year}, ${hours}:${minutes}:${seconds}`;
+
+    // Display the formatted time in the <p> tag with id="timer"
+    document.getElementById('timer').textContent = formattedTime;
 }
 
-setInterval(updateTime,1000);
-updateTime()
+// Update the time every second (1000 ms)
+setInterval(updateTime, 1000);
+
+// Initialize the time immediately when the page loads
+updateTime();
+
 
